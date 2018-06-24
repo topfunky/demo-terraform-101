@@ -43,7 +43,7 @@ resource "aws_instance" "web" {
   key_name = "${aws_key_pair.default.id}"
 
   tags {
-    "Name"       = "${var.identity} web ${count.index+1}/${var.num_webs}"
+    "Name"       = "${var.identity} tweb ${count.index+1}/${var.num_webs}"
     "Identity"   = "${var.identity}"
     "Created-by" = "Terraform"
   }
