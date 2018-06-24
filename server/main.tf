@@ -35,7 +35,7 @@ resource "aws_security_group" "default" {
 
 resource "aws_instance" "web" {
   ami           = "${var.ami}"
-  instance_type = "t2.nano"
+  instance_type = "t2.medium"
   count         = "${var.num_webs}"
 
   vpc_security_group_ids = ["${aws_security_group.default.id}"]
@@ -43,7 +43,7 @@ resource "aws_instance" "web" {
   key_name = "${aws_key_pair.default.id}"
 
   tags {
-    "Name"       = "${var.identity} tweb ${count.index+1}/${var.num_webs}"
+    "Name"       = "${var.identity} web ${count.index+1}/${var.num_webs}"
     "Identity"   = "${var.identity}"
     "Created-by" = "Terraform"
   }
